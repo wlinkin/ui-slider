@@ -4,81 +4,131 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<title>AngularUI - Slider demo</title>
-	<link href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" media="all" type="text/css" rel="stylesheet">
-	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
-	<script type="text/javascript" src="../src/slider.js"></script>
+	<base href=".."></base>
+  	<link rel="stylesheet" href="bower_components/jquery-ui/themes/smoothness/jquery-ui.css">
 	<style>
 		body {
 			padding: 2em;
 		}
-		#sliderExample {
+		.sliderExample {
 			width: 500px;
 			padding: 2em;
 			background-color: #f5f5f5;
 			border: 1px solid #f0f0f0;
 			margin: 2em;
 		}
-		#sliderExample > div {
+		.sliderExample > div {
 			margin: 1em 0;
+		}
+		.vertical-container {
+			width: 15%;
+			display: inline-block;
 		}
 	</style>
 </head>
-<body>
-	<h1>AngularUI Slider demo</h1>
+<body ng-controller="sliderDemoCtrl">
 
-	<div id="sliderExample">
+	<h1>AngularUI Slider demo</h1>
+	<div class="sliderExample">
 		<strong>Step slider</strong>
-		<div ui-slider min="0" max="50" ng-model="sliderExample1"></div>
-		<input type="number" ng-model="sliderExample1" />
+		<div ui-slider min="0" max="50" ng-model="demoVals.sliderExample1"></div>
+		<input type="text" ng-model="demoVals.sliderExample1" />
 	</div>
 	
-	<div id="sliderExample" ng-init="sliderExample2=0;min=0;max=20;step=5;">
-		<strong>Slider - step value 5</strong>
-		<div ui-slider min="{{min}}" max="{{max}}" step="{{step}}" ng-disabled="disabled" ng-model="sliderExample2"></div>
-		<input type="number" ng-model="sliderExample2" /><br>
-		Min: <input type="number" ng-model="min" />
-		Max: <input type="number" ng-model="max" />
-		Step: <input type="number" ng-model="step" />
-		<label>Disabled: <input type="checkbox" ng-model="disabled" /></label>
+	<div class="sliderExample">
+		<div>
+			<strong>Slider - vertical, step value 5</strong>
+		</div>
+		<div class="vertical-container">
+			<div ui-slider="{orientation: 'vertical', range: 'min'}"  min="0" max="25" step="5" ng-model="demoVals.sliderExample2"></div>
+		</div>
+		<div class="vertical-container">
+			<div ui-slider="{orientation: 'vertical', range: 'max'}"  min="0" max="25" step="5" ng-model="demoVals.sliderExample2"></div>
+		</div>
+		<div class="vertical-container">
+			<div ui-slider="{orientation: 'vertical', range: 'min'}"  min="0" max="25" step="5" ng-model="demoVals.sliderExample2"></div>
+		</div>
+		<div class="vertical-container">
+			<div ui-slider="{orientation: 'vertical', range: 'max'}"  min="0" max="25" step="5" ng-model="demoVals.sliderExample2"></div>
+		</div>
+		<div class="vertical-container">
+			<div ui-slider="{orientation: 'vertical', range: 'min'}"  min="0" max="25" step="5" ng-model="demoVals.sliderExample2"></div>
+		</div>
+		<div>
+			<input type="text" ng-model="demoVals.sliderExample2" />
+		</div>
 	</div>
-
-	<div id="sliderExample" ng-init="sliderExample3=14">
+	
+	<div class="sliderExample">
 		<strong>Slider - start value 14</strong>
-		<div ui-slider min="0" max="20" ng-model="sliderExample3"></div>
-		<input type="number" ng-model="sliderExample3" />
+		<div ui-slider min="0" max="20" ng-model="demoVals.sliderExample3"></div>
+		<input type="text" ng-model="demoVals.sliderExample3" />
 	</div>
 
-	<div id="sliderExample" ng-init="sliderExample4=10">
-		<strong>Dual sliders - start value 10</strong>
-		<div ui-slider min="0" max="20" ng-model="sliderExample4"></div>
-		<div ui-slider min="0" max="20" ng-model="sliderExample4"></div>
-		<input type="number" ng-model="sliderExample4" />
+	<div class="sliderExample">
+		<strong>Dual sliders - start value 14</strong>
+		<div ui-slider min="0" max="20" ng-model="demoVals.sliderExample4"></div>
+		<div ui-slider min="0" max="20" ng-model="demoVals.sliderExample4"></div>
+		<input type="text" ng-model="demoVals.sliderExample4" />
 	</div>
 
-	<div id="sliderExample" >
+	<div class="sliderExample">
 		<strong>Slider - default min and max</strong>
-		<div ui-slider ng-model="sliderExample5"></div>
-		<input type="number" ng-model="sliderExample5" />
+		<div ui-slider ng-model="demoVals.sliderExample5"></div>
+		<input type="text" ng-model="demoVals.sliderExample5" />
 	</div>
 
-	<div id="sliderExample" ng-init="sliderExample6=[10,20]">
-		<strong>Slider - range true</strong>
-		<div ui-slider="{range:true}" ng-model="sliderExample6"></div>
-		<input type="number" ng-model="sliderExample6[0]" />
-		<input type="number" ng-model="sliderExample6[1]" />
-		<pre>{{sliderExample6}}</pre>
+	<div class="sliderExample">
+		<strong>Slider - range max (instead of min)</strong>
+		<div ui-slider="{range: 'max'}" ng-model="demoVals.sliderExample6"></div>
+		<input type="text" ng-model="demoVals.sliderExample6" />
 	</div>
-	<div id="sliderExample" ng-init="sliderExample7=50">
-		<strong>Slider - range max</strong>
-		<div ui-slider="{range:'max'}" ng-model="sliderExample7"></div>
-		<input type="number" ng-model="sliderExample7" />
-		<pre>{{sliderExample7}}</pre>
+
+	<h2>Examples with decimals</h2>
+	
+	<div class="sliderExample">
+		<strong>Slider - range values, step with decimals</strong>
+		<div ui-slider="{range: true}" min="0" max="100" step="0.01" use-decimals ng-model="demoVals.sliderExample7"></div>
+		<input type="text" ng-model="demoVals.sliderExample7" />
 	</div>
-		
+
+	<div class="sliderExample">
+		<strong>Slider - start value 0.34, step with decimals (try increase/decrease with arrow keys)</strong>
+		<div ui-slider min="0.00" max="2.00" step="0.01" use-decimals ng-model="demoVals.sliderExample8"></div>
+		<div ui-slider min="0.00" max="2.00" step="0.01" use-decimals ng-model="demoVals.sliderExample8"></div>
+		<input type="text" ng-model="demoVals.sliderExample8" />
+	</div>
+
+	<div class="sliderExample">
+		<strong>Slider - start value [-0.52, 0.54], step with decimals from min -1.00 to max 1.00 (try increase/decrease with arrow keys)</strong>
+		<div ui-slider="{range: true}" min="-1.00" max="1.00" step="0.01" use-decimals ng-model="demoVals.sliderExample9"></div>
+		<div ui-slider="{range: true}" min="-1.00" max="1.00" step="0.01" use-decimals ng-model="demoVals.sliderExample9"></div>
+		<input type="text" ng-model="demoVals.sliderExample9" />
+	</div>
+
+	<div class="sliderExample">
+		<strong>Slider - start value -0.37, step with decimals from min -1.00 to max 1.00</strong>
+		<div ui-slider min="-1.00" max="1.00" step="0.01" use-decimals ng-model="demoVals.sliderExample10"></div>
+		<div ui-slider min="-1.00" max="1.00" step="0.01" use-decimals ng-model="demoVals.sliderExample10"></div>
+		<input type="text" ng-model="demoVals.sliderExample10" />
+	</div>
+	
+	<script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+  	<script type="text/javascript" src="bower_components/jquery-ui/ui/minified/jquery-ui.min.js"></script>
+  	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>	
+	<script type="text/javascript" src="src/slider.js"></script>	
 	<script>
-		angular.module('sliderDemoApp', ['ui.slider']);
-	</script>
+		var app = angular.module('sliderDemoApp', ['ui.slider']);
+		app.controller('sliderDemoCtrl', function($scope) {
+		    $scope.demoVals = {
+		        sliderExample3:     14,
+		        sliderExample4:     14,
+		        sliderExample5:     50,
+		        sliderExample8:     0.34,
+		        sliderExample9:     [-0.52, 0.54],
+		        sliderExample10:     -0.37
+		    };		
+		});
+	</script>	
 </body>
 </html>
